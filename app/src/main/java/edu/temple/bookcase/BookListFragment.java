@@ -44,7 +44,6 @@ public class BookListFragment extends Fragment {
      * @param bookNames Parameter 1.
      * @return A new instance of fragment BookListFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static BookListFragment newInstance(ArrayList<String> bookNames) {
         BookListFragment fragment = new BookListFragment();
         Bundle args = new Bundle();
