@@ -1,18 +1,15 @@
 package edu.temple.bookcase;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 
 
@@ -48,7 +45,24 @@ public class ViewPagerFragment extends Fragment {
 
         @Override
         public Fragment getItem(int position) {
-            return BookDetailsFragment.newInstance(getResources().getStringArray(R.array.book_names)[position]);
+            switch (position) {
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                    return BookDetailsFragment.newInstance(getResources().getStringArray(R.array.book_names)[position]);
+                default:
+                    return null;
+            }
+
+
+
         }
 
         @Override

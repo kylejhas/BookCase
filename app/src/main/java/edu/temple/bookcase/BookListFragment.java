@@ -1,7 +1,6 @@
 package edu.temple.bookcase;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -111,7 +110,6 @@ public class BookListFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface onBookSelectedInterface {
-        // TODO: Update argument type and name
         void selected(int pos);
     }
 }

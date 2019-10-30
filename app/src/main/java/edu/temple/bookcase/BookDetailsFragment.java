@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 
 public class BookDetailsFragment extends Fragment {
-    private static final String TITLE_KEY = "title";
+    public static final String TITLE_KEY = "title";
     String title;
     TextView textView;
 
