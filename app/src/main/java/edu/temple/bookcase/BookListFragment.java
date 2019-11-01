@@ -26,8 +26,8 @@ import java.util.ArrayList;
  */
 public class BookListFragment extends Fragment {
 
-    ArrayList<String> bookNames;
-    private static final String BOOK_KEY = "bookNames";
+    ArrayList<String> book_names;
+    private static final String BOOK_KEY = "book_names";
 
 
     private onBookSelectedInterface fragmentParent;
@@ -40,14 +40,14 @@ public class BookListFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param bookNames Parameter 1.
+     * @param book_names Parameter 1.
      * @return A new instance of fragment BookListFragment.
      */
-    public static BookListFragment newInstance(ArrayList<String> bookNames) {
+    public static BookListFragment newInstance(ArrayList<String> book_names) {
         BookListFragment fragment = new BookListFragment();
         Bundle args = new Bundle();
 
-        args.putString(BOOK_KEY, String.valueOf(bookNames));
+        args.putStringArrayList(BOOK_KEY, book_names);
 
         fragment.setArguments(args);
         return fragment;
@@ -57,8 +57,8 @@ public class BookListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle args = getArguments();
-        if (getArguments() != null) {
-            bookNames = getArguments().getStringArrayList(BOOK_KEY);
+        if (args != null) {
+            book_names = args.getStringArrayList(BOOK_KEY);
 
         }
     }
@@ -69,7 +69,7 @@ public class BookListFragment extends Fragment {
         // Inflate the layout for this fragment
         ListView listview = (ListView) inflater.inflate(R.layout.fragment_book_list, container, false);
 
-        listview.setAdapter(new ArrayAdapter<>((Context) fragmentParent, android.R.layout.simple_list_item_1, bookNames ));
+        listview.setAdapter(new ArrayAdapter<>((Context) fragmentParent, android.R.layout.simple_list_item_1, book_names ));
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

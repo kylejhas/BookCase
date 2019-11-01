@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity implements BookListFragment.
 
     BookDetailsFragment bookDetailsFragment;
     boolean single;
-    ArrayList<String> book = new ArrayList<>();
+    ArrayList<String> book_names = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements BookListFragment.
         setContentView(R.layout.activity_main);
 
         Resources res = getResources();
-        book.addAll(Arrays.asList(res.getStringArray(R.array.book_names)));
+        book_names.addAll(Arrays.asList(res.getStringArray(R.array.book_names)));
 
         single = (findViewById(R.id.container_2) == null);
 
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements BookListFragment.
         } else{
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.container_1, BookListFragment.newInstance(book))
+                    .replace(R.id.container_1, BookListFragment.newInstance(book_names))
                     .commit();
         }
 
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements BookListFragment.
 
     @Override
     public void selected(int pos) {
-        String title = book.get(pos);
+        String title = book_names.get(pos);
 
         bookDetailsFragment = new BookDetailsFragment();
         Bundle bundle = new Bundle();
