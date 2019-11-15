@@ -215,7 +215,6 @@ public class MainActivity extends AppCompatActivity implements BookListFragment.
             if (!single) {
                 getSupportFragmentManager()
                         .beginTransaction()
-                        .addToBackStack(null)
                         .replace(R.id.container_2, bookDetailsFragment)
                         .commit();
             }

@@ -1,6 +1,7 @@
 package edu.temple.bookcase;
 
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,8 +48,9 @@ public class BookDetailsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            title = getArguments().getParcelable(BOOK_KEY);
+        Bundle args = getArguments();
+        if (args != null) {
+            book = getArguments().getParcelable(BOOK_KEY);
 
         }
     }
@@ -80,6 +82,7 @@ public class BookDetailsFragment extends Fragment {
         Picasso.get().load(book.getCoverUrl()).into(cover);
         title.setText(book.getTitle());
         author.setText(book.getAuthor());
+        author.setGravity(Gravity.CENTER);
         published.setText(String.format(getResources().getString(R.string.published), book.getPublished()));
         bookLength.setText(String.format(getResources().getString(R.string.bookLength), book.getDuration()));
 
