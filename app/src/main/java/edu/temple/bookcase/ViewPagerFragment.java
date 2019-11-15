@@ -63,6 +63,11 @@ public class ViewPagerFragment extends Fragment {
         return view;
     }
 
+    public ArrayList<Book> getBooks(){
+        return this.books;
+    }
+
+
     private class BookCasePagerAdapter extends FragmentStatePagerAdapter{
 
             ArrayList<BookDetailsFragment> bookDetailsFragments;
