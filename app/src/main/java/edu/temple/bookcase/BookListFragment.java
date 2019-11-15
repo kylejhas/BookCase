@@ -2,16 +2,14 @@ package edu.temple.bookcase;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.AdapterView;
 
+import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 
@@ -26,8 +24,9 @@ import java.util.ArrayList;
  */
 public class BookListFragment extends Fragment {
 
-    ArrayList<String> book_names;
-    private static final String BOOK_KEY = "book_names";
+    ArrayList<String> bookNames = new ArrayList<>();
+    ArrayList<Book> books;
+    private static final String BOOK_KEY = "books";
 
 
     private onBookSelectedInterface fragmentParent;
@@ -40,14 +39,14 @@ public class BookListFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param book_names Parameter 1.
+     * @param books     Parameter 1.
      * @return A new instance of fragment BookListFragment.
      */
-    public static BookListFragment newInstance(ArrayList<String> book_names) {
+    public static BookListFragment newInstance(ArrayList<Book> books) {
         BookListFragment fragment = new BookListFragment();
         Bundle args = new Bundle();
 
-        args.putStringArrayList(BOOK_KEY, book_names);
+        args.putParcelableArrayList(BOOK_KEY, books);
 
         fragment.setArguments(args);
         return fragment;
@@ -58,8 +57,13 @@ public class BookListFragment extends Fragment {
         super.onCreate(savedInstanceState);
         Bundle args = getArguments();
         if (args != null) {
-            book_names = args.getStringArrayList(BOOK_KEY);
+            books = args.getParcelableArrayList(BOOK_KEY);
+        }
 
+        if(books != null){
+            for(int i = 0; i < books.size(); i++){
+                bookNames.add(books.get(i).getTitle());
+            }
         }
     }
 
@@ -69,7 +73,7 @@ public class BookListFragment extends Fragment {
         // Inflate the layout for this fragment
         ListView listview = (ListView) inflater.inflate(R.layout.fragment_book_list, container, false);
 
-        listview.setAdapter(new ArrayAdapter<>((Context) fragmentParent, android.R.layout.simple_list_item_1, book_names ));
+        listview.setAdapter(new ArrayAdapter<>((Context) fragmentParent, android.R.layout.simple_list_item_1, bookNames ));
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -111,5 +115,9 @@ public class BookListFragment extends Fragment {
      */
     public interface onBookSelectedInterface {
         void selected(int pos);
+    }
+
+    public ArrayList<Book> getBooks(){
+        return this.books;
     }
 }
