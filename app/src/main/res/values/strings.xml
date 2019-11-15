@@ -1,17 +1,7 @@
 <resources>
     <string name="app_name">Book Case</string>
-    <string-array name="book_names">
-        <item>The Handmaids Tale</item>
-        <item>It</item>
-        <item>The Man in the High Castle</item>
-        <item>Ready Player One</item>
-        <item>The Lord of the Rings</item>
-        <item>Fahrenheit 451</item>
-        <item>Brave New World</item>
-        <item>A Game of Thrones</item>
-        <item>Of Mice and Men</item>
-        <item>Don Quixote</item>
-    </string-array>
-
+    <string name="published">Published in %d</string>
+    <string name="bookLength">%s pages</string>
+    <string name="image">Book cover\'s image</string>
 
 </resources>
