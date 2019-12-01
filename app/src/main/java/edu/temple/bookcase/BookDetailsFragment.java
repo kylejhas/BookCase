@@ -1,10 +1,12 @@
 package edu.temple.bookcase;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +25,8 @@ public class BookDetailsFragment extends Fragment {
     ImageView cover;
     TextView title, author, published, bookLength;
     Book book;
+    private BookPlay fragmentParent;
+    Button playButton;
 
 
     public BookDetailsFragment() {
@@ -75,8 +79,33 @@ public class BookDetailsFragment extends Fragment {
 
         if(book != null){
             displayBook(book);
+            playButton = getView().findViewById(R.id.playButton);
+            playButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    fragmentParent.playBook(book);
+                }
+            });
         }
     }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if(context instanceof BookDetailsFragment.BookPlay){
+            fragmentParent = (BookDetailsFragment.BookPlay) context;
+        }else{
+            throw new RuntimeException(context.toString() +
+                    " must implement BookPlay interface");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        fragmentParent = null;
+    }
+
 
     private void displayBook(Book book) {
         Picasso.get().load(book.getCoverUrl()).into(cover);
@@ -86,5 +115,9 @@ public class BookDetailsFragment extends Fragment {
         published.setText(String.format(getResources().getString(R.string.published), book.getPublished()));
         bookLength.setText(String.format(getResources().getString(R.string.bookLength), book.getDuration()));
 
+    }
+
+    public interface BookPlay{
+        void playBook(Book book);
     }
 }

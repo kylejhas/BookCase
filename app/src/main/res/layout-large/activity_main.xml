@@ -23,25 +23,25 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/container_1"
-        app:layout_constraintTop_toBottomOf="@+id/searchInput"
+        app:layout_constraintTop_toBottomOf="@+id/userSearch"
         app:layout_constraintVertical_bias="0.451">
 
     </FrameLayout>
 
     <EditText
-        android:id="@+id/searchInput"
+        android:id="@+id/userSearch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="3dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/searchBtn"
+        app:layout_constraintEnd_toStartOf="@+id/searchButton"
         app:layout_constraintStart_toEndOf="@+id/container_1"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/searchBtn"
+        android:id="@+id/searchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -49,7 +49,61 @@
         android:layout_marginEnd="20dp"
         android:text="@android:string/search_go"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/searchInput"
+        app:layout_constraintStart_toEndOf="@+id/userSearch"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="231dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userSearch" />
+
+    <Button
+        android:id="@+id/pauseButton"
+        android:layout_width="70dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/pause"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/container_1" />
+
+    <Button
+        android:id="@+id/stopButton"
+        android:layout_width="70dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/stop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/seekBar"
+        app:layout_constraintStart_toEndOf="@+id/pauseButton" />
+
+    <TextView
+        android:id="@+id/nowPlaying"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="17dp"
+        android:text="@string/now_playing"
+        app:layout_constraintStart_toEndOf="@+id/container_1"
+        app:layout_constraintTop_toBottomOf="@+id/pauseButton" />
+
+    <TextView
+        android:id="@+id/playedBookTitle"
+        android:layout_width="300dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="24dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nowPlaying"
+        app:layout_constraintTop_toBottomOf="@+id/stopButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

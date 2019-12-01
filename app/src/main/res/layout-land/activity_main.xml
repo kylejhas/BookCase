@@ -52,4 +52,58 @@
         app:layout_constraintStart_toEndOf="@+id/container_1"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="270dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/stopButton"
+        app:layout_constraintTop_toBottomOf="@+id/userSearch" />
+
+    <Button
+        android:id="@+id/stopButton"
+        android:layout_width="70dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="25dp"
+        android:text="@string/stop"
+        app:layout_constraintStart_toEndOf="@+id/pauseButton"
+        app:layout_constraintTop_toBottomOf="@+id/userSearch" />
+
+    <Button
+        android:id="@+id/pauseButton"
+        android:layout_width="70dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="14dp"
+        android:text="@string/pause"
+        app:layout_constraintStart_toEndOf="@+id/container_1"
+        app:layout_constraintTop_toBottomOf="@+id/userSearch" />
+
+    <TextView
+        android:id="@+id/nowPlaying"
+        android:layout_width="82dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="90dp"
+        android:text="@string/now_playing"
+        app:layout_constraintEnd_toStartOf="@+id/playedBookTitle"
+        app:layout_constraintStart_toEndOf="@id/container_1"
+        app:layout_constraintTop_toBottomOf="@+id/pauseButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/playedBookTitle"
+        android:layout_width="336dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="40dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nowPlaying"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
